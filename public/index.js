@@ -1,5 +1,5 @@
 // Define the standard global variables
-var container1,
+var container,
     scene,
     camera,
     renderer,
@@ -19,7 +19,7 @@ animate();
 function init() {
 
     // Scene
-    scene1 = new THREE.Scene();
+    scene = new THREE.Scene();
 
     window.addEventListener('resize', function () {
         var WIDTH = window.innerWidth,
@@ -47,10 +47,10 @@ function init() {
         alpha: true
     });
     renderer.setSize(screenWidth, screenHeight);
-    container1 = document.getElementById('container1');
-    container1.appendChild(renderer.domElement);
+    container = document.getElementById('container');
+    container.appendChild(renderer.domElement);
 
-    // Define the lights for the scene1
+    // Define the lights for the scene
     light = new THREE.PointLight(0xff00ff);
     light.position.set(0, 0, 15);
     scene.add(light);
@@ -103,8 +103,6 @@ function render() {
     renderer.clear();
     renderer.render(scene, camera);
 };
-
-
 
 
 ///
