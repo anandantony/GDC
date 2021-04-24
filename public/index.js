@@ -41,7 +41,7 @@ function init() {
         farDistance = 1000;
 
     camera = new THREE.PerspectiveCamera(viewAngle, screenWidth / screenHeight, nearDistance, farDistance);
-    scene1.add(camera);
+    scene1.add(camera1);
     camera.position.set(0, 0, 5);
     camera.lookAt(scene1.position);
 
@@ -83,6 +83,7 @@ function init() {
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     const cube = new THREE.Mesh(geometry, material);
     scene2.add(cube);
+    scene2.add(camera2);
 
     camera2.position.z = 5;
 }
