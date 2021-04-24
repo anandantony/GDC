@@ -1,7 +1,11 @@
 // Define the standard global variables
 var container1,
     scene,
+    scene1,
+    scene2,
     camera,
+    camera1,
+    camera2,
     renderer,
     plane,
     mouseMesh,
@@ -19,7 +23,7 @@ animate();
 function init() {
 
     // Scene
-    scene = new THREE.Scene();
+    scene1 = new THREE.Scene();
 
     window.addEventListener('resize', function () {
         var WIDTH = window.innerWidth,
@@ -37,9 +41,9 @@ function init() {
         farDistance = 1000;
 
     camera = new THREE.PerspectiveCamera(viewAngle, screenWidth / screenHeight, nearDistance, farDistance);
-    scene.add(camera);
+    scene1.add(camera);
     camera.position.set(0, 0, 5);
-    camera.lookAt(scene.position);
+    camera.lookAt(scene1.position);
 
     // Renderer engine together with the background
     renderer = new THREE.WebGLRenderer({
@@ -50,12 +54,12 @@ function init() {
     container1 = document.getElementById('container1');
     container1.appendChild(renderer.domElement);
 
-    // Define the lights for the scene
+    // Define the lights for the scene1
     light = new THREE.PointLight(0xff00ff);
     light.position.set(0, 0, 15);
-    scene.add(light);
+    scene1.add(light);
     var lightAmb = new THREE.AmbientLight(0x000000);
-    scene.add(lightAmb);
+    scene1.add(lightAmb);
 
     // Create a circle around the mouse and move it
     // The sphere has opacity 0
@@ -64,10 +68,27 @@ function init() {
     mouseMesh = new THREE.Mesh(mouseGeometry, mouseMaterial);
 
     mouseMesh.position.set(0, 0, 0);
-    scene.add(mouseMesh);
+    scene1.add(mouseMesh);
 
     // When the mouse moves, call the given function
     document.addEventListener('mousemove', onMouseMove, false);
+    scene = scene1;
+    camera = camera1;
+
+
+    //scene2
+    scene2 = new THREE.Scene();
+    camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene2.add(cube);
+
+    camera2.position.z = 5;
 }
 
 // Follows the mouse event
@@ -98,6 +119,9 @@ function animate() {
 // Rendering function
 function render() {
 
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
     // For rendering
     renderer.autoClear = false;
     renderer.clear();
@@ -120,6 +144,8 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
         }
         entry.target.classList.add('appear');
         appearOnScroll.unobserve('entry.target');
+        scene = scene2;
+        camera = camera2;
     })
 }, appearOptions);
 
