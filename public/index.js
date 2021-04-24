@@ -1,5 +1,5 @@
 // Define the standard global variables
-var container,
+var container1,
     scene,
     camera,
     renderer,
@@ -47,8 +47,8 @@ function init() {
         alpha: true
     });
     renderer.setSize(screenWidth, screenHeight);
-    container = document.getElementById('container');
-    container.appendChild(renderer.domElement);
+    container1 = document.getElementById('container1');
+    container1.appendChild(renderer.domElement);
 
     // Define the lights for the scene
     light = new THREE.PointLight(0xff00ff);
@@ -103,3 +103,24 @@ function render() {
     renderer.clear();
     renderer.render(scene, camera);
 };
+
+
+///
+
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = {
+    threshold: 1
+};
+const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+            return;
+        }
+        entry.target.classList.add('appear');
+        appearOnScroll.unobserve('entry.target');
+    })
+}, appearOptions);
+
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+})
