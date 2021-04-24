@@ -102,8 +102,7 @@ function render() {
     renderer.autoClear = false;
     renderer.clear();
     renderer.render(scene, camera);
-}
-
+};
 
 ///
 
