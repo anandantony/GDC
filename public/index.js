@@ -124,7 +124,7 @@ function render() {
     // For rendering
     renderer.autoClear = false;
     renderer.clear();
-    renderer.render(scene, camera);
+    renderer.render(scene2, camera2);
 };
 
 
@@ -139,14 +139,10 @@ const appearOptions = {
 const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
     entries.forEach(entry => {
         if (!entry.isIntersecting) {
-            scene = scene1;
-            camera = camera1;
             return;
         }
         entry.target.classList.add('appear');
         appearOnScroll.unobserve('entry.target');
-        scene = scene2;
-        camera = camera2;
     })
 }, appearOptions);
 
