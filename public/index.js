@@ -102,7 +102,7 @@ function render() {
     renderer.autoClear = false;
     renderer.clear();
     renderer.render(scene, camera);
-};
+}
 
 
 ///
@@ -123,4 +123,4 @@ const appearOnScroll = new IntersectionObserver(function (entries, appearOnScrol
 
 faders.forEach(fader => {
     appearOnScroll.observe(fader);
-})
+});
