@@ -86,6 +86,7 @@ function init() {
     scene2.add(camera2);
 
     camera2.position.z = 5;
+    camera2.lookAt(scene2.position);
 }
 
 // Follows the mouse event
