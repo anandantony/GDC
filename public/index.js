@@ -72,8 +72,7 @@ function init() {
 
     // When the mouse moves, call the given function
     document.addEventListener('mousemove', onMouseMove, false);
-    scene = scene1;
-    camera = camera1;
+
 
 
     //scene2
@@ -140,6 +139,8 @@ const appearOptions = {
 const appearOnScroll = new IntersectionObserver(function (entries, appearOnScroll) {
     entries.forEach(entry => {
         if (!entry.isIntersecting) {
+            scene = scene1;
+            camera = camera1;
             return;
         }
         entry.target.classList.add('appear');
