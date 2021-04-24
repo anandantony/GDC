@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         #container {
-            position: static;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100vh;
             background-color: black;
@@ -26,6 +28,12 @@
             color: white;
             text-align: center;
         }
+
+        #content {
+            text-shadow: -1px -1px 1px #000, 1px 1px 1px #000;
+            position: relative;
+            z-index: 1;
+        }
     </style>
     <title>GDC</title>
 
@@ -35,7 +43,7 @@
 
 <body>
     <div id="container"></div>
-    <div>
+    <div id="content">
         <p id="Header">Hello there!</p>
     </div>
 
