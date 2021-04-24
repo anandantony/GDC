@@ -68,21 +68,6 @@ function init() {
 
     // When the mouse moves, call the given function
     document.addEventListener('mousemove', onMouseMove, false);
-
-
-
-    //scene2
-    scene2 = new THREE.Scene();
-    camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    document.body.appendChild(renderer.domElement);
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene2.add(cube);
-    scene2.add(camera2);
-
-    camera2.position.z = 5;
-    camera2.lookAt(scene2.position);
 }
 
 // Follows the mouse event
@@ -112,9 +97,6 @@ function animate() {
 
 // Rendering function
 function render() {
-
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
 
     // For rendering
     renderer.autoClear = false;
