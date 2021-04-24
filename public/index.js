@@ -1,11 +1,7 @@
 // Define the standard global variables
 var container1,
     scene,
-    scene1,
-    scene2,
     camera,
-    camera1,
-    camera2,
     renderer,
     plane,
     mouseMesh,
@@ -41,9 +37,9 @@ function init() {
         farDistance = 1000;
 
     camera = new THREE.PerspectiveCamera(viewAngle, screenWidth / screenHeight, nearDistance, farDistance);
-    scene1.add(camera1);
+    scene.add(camera);
     camera.position.set(0, 0, 5);
-    camera.lookAt(scene1.position);
+    camera.lookAt(scene.position);
 
     // Renderer engine together with the background
     renderer = new THREE.WebGLRenderer({
@@ -57,9 +53,9 @@ function init() {
     // Define the lights for the scene1
     light = new THREE.PointLight(0xff00ff);
     light.position.set(0, 0, 15);
-    scene1.add(light);
+    scene.add(light);
     var lightAmb = new THREE.AmbientLight(0x000000);
-    scene1.add(lightAmb);
+    scene.add(lightAmb);
 
     // Create a circle around the mouse and move it
     // The sphere has opacity 0
@@ -68,7 +64,7 @@ function init() {
     mouseMesh = new THREE.Mesh(mouseGeometry, mouseMaterial);
 
     mouseMesh.position.set(0, 0, 0);
-    scene1.add(mouseMesh);
+    scene.add(mouseMesh);
 
     // When the mouse moves, call the given function
     document.addEventListener('mousemove', onMouseMove, false);
@@ -123,7 +119,7 @@ function render() {
     // For rendering
     renderer.autoClear = false;
     renderer.clear();
-    renderer.render(scene1, camera1);
+    renderer.render(scene, camera);
 };
 
 
