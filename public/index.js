@@ -123,7 +123,7 @@ function render() {
     // For rendering
     renderer.autoClear = false;
     renderer.clear();
-    renderer.render(scene2, camera2);
+    renderer.render(scene1, camera1);
 };
 
 
