@@ -1,3 +1,5 @@
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js';
+import * as TweenMax from 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js'
 let renderer, scene, camera, cameraCtrl;
 let width, height, cx, cy, wWidth, wHeight;
 const TMath = THREE.Math;
